@@ -1,2 +1,39 @@
 # AmazonML-2023
-Team AlphaQ : This repository contains the Colab notebook, submission file and readme description for our submission in the Amazon ML Challenge 2023 (Ranked 31 out of 26000 registrations)
+
+## Team AlphaQ : 
+
+This repository contains the Colab notebook, submission file and readme description for our submission in the Amazon ML Challenge 2023 (Ranked 31 out of 26000 registrations)
+
+## Approach To Building A Machine Learning Model To Predict Product Length : 
+
+The goal of this project is to develop a machine learning model that can accurately predict the length dimension of a product using catalog metadata. This is important for efficient packaging and storage of products in the warehouse as well as to provide potential customers with important product size information.
+
+To achieve this goal, we followed a machine learning approach that involved several steps, including data preprocessing, feature engineering, model selection, and prediction.
+
+## Data Preprocessing :
+
+We started by preprocessing the dataset to remove missing values, fill NaN values with blank strings, remove outliers in numerical data using log1p transformation, and perform min-max scaling. We also carried out text preprocessing by converting all text columns to lower case, dropping punctuations, and lemmatizing the text. This helped us to prepare the dataset for feature engineering.
+
+## Feature Engineering :
+
+For feature engineering, we implemented one-hot encoding for the categorical column PRODUCT_TYPE_ID, which gave us more features. We also implemented TF-IDF vectorization on the preprocessed text data to generate additional features. This helped us to create better and more informative features that could improve our model's accuracy.
+
+We combined the numerical one-hot and text features using scipy sparse hstack, forming our final training and test features.
+
+## Model Selection :
+
+For our model selection, we experimented with various regression models such as ridge, lasso, xgboost, random forest, etc. We trained each model and evaluated its performance using cross-validation techniques, selecting the best model that gave us the lowest mean squared error (MSE).
+
+We found that the Ridge Regressor gave us the best result with alpha = 1.0. This model uses L2 regularization to prevent overfitting and produces a linear model that can predict product length accurately.
+
+## Prediction :
+
+After selecting our model, we made our predictions and converted them to the original units by using np.expm1, as we had used log1p to remove outliers during the data preprocessing phase. Finally, we made our submission file and submitted it, getting a score of 50.09074.
+
+## Tools Used :
+
+We used several tools to implement our machine learning solution, including Python programming language, Pandas for data manipulation, Scikit-Learn for machine learning tasks, Numpy for numerical computing, and Natural Language Processing (NLP) techniques for text preprocessing.
+
+## Conclusion :
+
+In conclusion, our machine learning solution involved several steps, including data preprocessing, feature engineering, model selection, and prediction. By using Ridge Regressor as our model, we were able to accurately predict the length dimension of a product using catalog metadata. This could have important implications for improving warehouse efficiency and providing customers with more informative product size information.
